@@ -66,7 +66,7 @@ for (let i = 0; i < spaces.length; i++) {
             this.classList.add("space-taken-x");
 
             players.x[i] = 1
-            playerTurnText.textContent = "Player Y's Turn"
+            playerTurnText.textContent = "Player O's Turn"
             playerTurnText.style.color = "red"
 
             board.style.borderColor = "red"
@@ -98,7 +98,7 @@ for (let i = 0; i < spaces.length; i++) {
 
             if (checkWin(players.y)){
                 playingBoardFront.style.pointerEvents = "none"
-                playerTurnText.textContent = "Player Y Wins !"
+                playerTurnText.textContent = "Player O Wins !"
                 playingBoard.classList.add("draw")
                 playingBoard.style.backgroundColor = "rgb(255, 0, 0,0.15)"
                 playerTurnText.classList.add("win")
