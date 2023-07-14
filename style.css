@@ -1,32 +1,157 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
 #game-container{
     width: 100%;
     height: 100vh;
-    background-color: black;
+    /* background-color: black; */
+    background-image: url(assets/Sprinkle.svg);
+    background-size: cover;
+    color: #ffffff;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     
 }
 #board{
+    background-color: transparent;
     width: 600px;
     height: 600px;
-    background-color: aquamarine;
+    border-radius: 10%;
+    border: dashed lime 5px;
+    transition-duration: 0.5s;
+    overflow: hidden;
+    perspective: 1000px;
+}
+#board-inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: rgb(0, 255, 0, 0.15);
+    transition-delay: 4s;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+#board-front, #board-back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 45px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+#board-front{
+    width: 100%;
+    height: 100%;
+    /* background-color: lime; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
+    z-index: 0
+}
+
+#board-back{
+    background-color: transparent;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 2s;
+    transform: rotateY(180deg)
+}
+
+
+
+#replay-button {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#replay-button:hover img {
+    animation: spin 0.6s ;
+    transition: background-color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    
+}
+
+#replay-button img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+#player-turn-text{
+    transition-duration: 1s;
+    font-family: cursive;
+    font-size: 20px;
+    color: lime
+}
+
+#gamestatus{
+    font-family: cursive;
 }
 
 .space{
     background-color: aliceblue;
+    border-radius: 20px;
+    margin: 15px;
 }
 
 .space:hover{
-    background-color: bisque;
+    background-color: #b7daff;
 }
 
-.space-taken{
-    transition-duration: 0.15s;
+.space-taken-x{
+    transition-duration: 0.1s;
     transition-timing-function: linear;
-    transition-delay: 0.2s;
+    transition-delay: 0.05s;
     transform: scale(0.8);
+    border-radius: 50%;
+    pointer-events: none;
 }
+.space-taken-o{
+    transition-duration: 0.1s;
+    transition-timing-function: linear;
+    transition-delay: 0.05s;
+    transform: scale(0.8);
+    border-radius: 30%;
+    pointer-events: none;
+}
+
+.draw{
+    transform: rotateY(180deg)
+}
+
+.win{
+    transition-duration: 1s;
+    transform: translateY(150px) scale(2);
+    z-index: 1;
+}
+
+
+
+
+
+/* Animations for Button */
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
